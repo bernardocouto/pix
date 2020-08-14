@@ -1,3 +1,3 @@
 export default `
-    GetAgenciaByNumero(numero: String!): Banco @cypher(statement: "MATCH (a:Agencia) WHERE a.numero = $numero RETURN a")
+    GetAgenciaByNumero(numero: String!): Agencia @cypher(statement: "MATCH (a:Agencia) WHERE a.numero = $numero RETURN a")
 `;
