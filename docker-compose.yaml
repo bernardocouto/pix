@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+    application:
+        depends_on:
+            - neo4j
+        environment:
+            - NEO4J_URL=neo4j
+        image: pix
+        links:
+            - neo4j
+        ports:
+            - 4004:4004
+
+    neo4j:
+        image: neo4j:latest
+        environment:
+            - NEO4J_apoc_export_file_enabled=true
+            - NEO4J_apoc_import_file_enabled=true
+            - NEO4J_apoc_uuid_enabled=true
+            - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+            - NEO4J_dbms_shell_enabled=true
+            - NEO4J_AUTH=none
+        ports:
+            - 7473:7473
+            - 7474:7474
+            - 7687:7687
+        volumes:
+            - $PWD/neo4j/data:/data
+            - $PWD/neo4j/plugins:/plugins

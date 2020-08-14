@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Neo4j
+neo4j/data
