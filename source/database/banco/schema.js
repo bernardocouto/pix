@@ -3,5 +3,6 @@ export default `
         ispb: String!
         nome: String!
         numero: String!
+        agencias: [Agencia] @relation(name: "AGENCIA", direction: "OUT")
     }
 `;
