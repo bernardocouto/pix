@@ -2,6 +2,7 @@ import agencia from './agencia';
 import banco from './banco';
 import conta from './conta';
 import pessoaFisica from './pessoaFisica';
+import pessoaJuridica from './pessoaJuridica';
 
 import { makeAugmentedSchema } from 'neo4j-graphql-js';
 
@@ -11,6 +12,7 @@ const mutations = `
         ${banco.mutation}
         ${conta.mutation}
         ${pessoaFisica.mutation}
+        ${pessoaJuridica.mutation}
     }
 `;
 
@@ -20,6 +22,7 @@ const queries = `
         ${banco.query}
         ${conta.query}
         ${pessoaFisica.query}
+        ${pessoaJuridica.query}
     }
 `;
 
@@ -28,7 +31,8 @@ const resolver = {
         agencia.resolver.Query,
         banco.resolver.Query,
         conta.resolver.Query,
-        pessoaFisica.resolver.Query
+        pessoaFisica.resolver.Query,
+        pessoaJuridica.resolver.Query
     )
 };
 
@@ -43,6 +47,7 @@ const schema = makeAugmentedSchema({
         banco.schema,
         conta.schema,
         pessoaFisica.schema,
+        pessoaJuridica.schema,
         mutations,
         queries
     ].join('')
